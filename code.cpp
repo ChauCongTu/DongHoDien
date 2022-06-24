@@ -1,28 +1,29 @@
-#include <reg51.h>
-#define msec 1
-unsigned int arr[10]={0x40,0xF9,0x24,0x30,0x19,0x12,0x02,0xF8,0x00,0x10};
+#include <reg51.h>	//Khai báo thư viện
+#define msec 1		//Định nghĩa biến msec kiểu dữ liệu là số nguyên, giá trị là 1
+unsigned int arr[10]={0x40,0xF9,0x24,0x30,0x19,0x12,0x02,0xF8,0x00,0x10};	//Khai báo mảng arr có 10 phần tử
+//khai báo các biến d, d0, d1, d2, d3, d4
 sbit d4=P1^0;
 sbit d3=P1^1;
 sbit d2=P1^2;
 sbit d1=P1^3;
 sbit d0=P1^4;
 sbit d= P1^5;
-unsigned int v1,v2,v3,v4,v0,v5,v6;
-void delay(unsigned int count)
+unsigned int v1,v2,v3,v4,v0,v5,v6;	//Khai báo biến toàn cục v0 -> v6
+void delay(unsigned int count)	//Code hàm delay truyền vào 1 giá trị count
 {
-	unsigned int j,k;
-	for (j=0;j<=count;j++)
-		for (k=0;k<=5;k++);
+	unsigned int j,k;	//Khai báo 2 biến j, k kiểu số nguyên
+	for (j=0;j<=count;j++)	//Vòng lặp for lặp count + 1 lần
+		for (k=0;k<=5;k++);	//Vòng lặp con, lặp (count +1)*6 lần
 }
-void main()
+void main()	//Hàm main chương trình
 {
-	//Khởi tạo các biến có giá trị ban đầu bằng 0
-	v1=v2=v3=v4=v0=v5=v6=0;
+	
+	v1=v2=v3=v4=v0=v5=v6=0;	//Khởi tạo các biến có giá trị ban đầu bằng 0
 	//Gía trị trong while là 0 khi ko có điện, 1 khi có điện
 	while(1)	//Vòng lặp while đc thực hiện khi giá trị bằng 1 (có điện)
 	{   
 		{
-      //Mỗi lần lặp sẽ thưc hiện tất cả công việc sau từ trên xuống dưới ( dòng 26 -> 105 )
+      			//Mỗi lần lặp sẽ thưc hiện tất cả công việc sau từ trên xuống dưới ( dòng 26 -> 105 )
 			v0=v0+1; 	//Tăng v0 lên 1 đơn vị
 			if(v0==130)	//Kiểm tra v0, nếu v0 = 130 thì tăng v1, reset v0. Nếu v0 ko bằng 130 thì bỏ qua dòng 28 -> 31
 			{
